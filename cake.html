@@ -1,0 +1,513 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>生日蛋糕</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap');
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #1a1a1a;
+        font-family: 'Comic Neue', cursive;
+        overflow: hidden;
+      }
+      .container {
+        text-align: center;
+        position: relative;
+        z-index: 10;
+      }
+      #fireworksCanvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        pointer-events: none;
+      }
+      .to-jiajia {
+        position: fixed;
+        top: 30px;
+        left: 30px;
+        font-family: 'Ma Shan Zheng', cursive;
+        font-size: 28px;
+        color: #ffffff;
+        z-index: 10;
+        opacity: 0.9;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="fireworksCanvas"></canvas>
+    <div class="to-jiajia">To 佳佳</div>
+
+    <div class="container">
+      <svg
+        width="400"
+        height="500"
+        viewBox="0 0 400 500"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <!-- 白色线条样式 -->
+        <g
+          fill="none"
+          stroke="#ffffff"
+          stroke-width="3"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <!-- 底部托盘 -->
+          <ellipse cx="200" cy="320" rx="95" ry="18" />
+
+          <!-- 蛋糕底层 -->
+          <!-- 底层主体 - 圆角矩形形状 -->
+          <path
+            d="M130 305 L130 260 Q130 245 200 245 Q270 245 270 260 L270 305 Q270 318 200 318 Q130 318 130 305"
+          />
+
+          <!-- 底层顶部糖霜波浪 -->
+          <path
+            d="M130 260 Q140 275 150 260 Q160 245 170 260 Q180 275 190 260 Q200 245 210 260 Q220 275 230 260 Q240 245 250 260 Q260 275 270 260"
+            stroke-width="3"
+            fill="none"
+          />
+
+          <!-- 底层糖霜滴落 -->
+          <path
+            d="M150 270 Q150 285 155 285 Q160 285 160 270"
+            stroke-width="2.5"
+          />
+          <path
+            d="M185 268 Q185 290 192 290 Q199 290 199 268"
+            stroke-width="2.5"
+          />
+          <path
+            d="M225 270 Q225 282 230 282 Q235 282 235 270"
+            stroke-width="2.5"
+          />
+
+          <!-- 底层顶部小圆点装饰 -->
+          <ellipse
+            cx="165"
+            cy="255"
+            rx="4"
+            ry="3"
+            fill="#ffffff"
+            stroke="none"
+          />
+          <ellipse
+            cx="200"
+            cy="252"
+            rx="4"
+            ry="3"
+            fill="#ffffff"
+            stroke="none"
+          />
+          <ellipse
+            cx="235"
+            cy="255"
+            rx="4"
+            ry="3"
+            fill="#ffffff"
+            stroke="none"
+          />
+
+          <!-- 蛋糕上层 -->
+          <!-- 上层主体 -->
+          <path
+            d="M155 245 L155 195 Q155 180 200 180 Q245 180 245 195 L245 245 Q245 255 200 255 Q155 255 155 245"
+          />
+
+          <!-- 上层顶部糖霜波浪 -->
+          <path
+            d="M155 195 Q162 208 170 195 Q178 182 186 195 Q194 208 202 195 Q210 182 218 195 Q226 208 234 195 Q242 182 245 195"
+            stroke-width="3"
+            fill="none"
+          />
+
+          <!-- 上层糖霜滴落 -->
+          <path
+            d="M170 202 Q170 215 174 215 Q178 215 178 202"
+            stroke-width="2.5"
+          />
+          <path
+            d="M195 200 Q195 220 200 220 Q205 220 205 200"
+            stroke-width="2.5"
+          />
+          <path
+            d="M222 202 Q222 212 226 212 Q230 212 230 202"
+            stroke-width="2.5"
+          />
+
+          <!-- 上层顶部小圆点装饰 -->
+          <ellipse
+            cx="180"
+            cy="190"
+            rx="3.5"
+            ry="2.5"
+            fill="#ffffff"
+            stroke="none"
+          />
+          <ellipse
+            cx="200"
+            cy="188"
+            rx="3.5"
+            ry="2.5"
+            fill="#ffffff"
+            stroke="none"
+          />
+          <ellipse
+            cx="220"
+            cy="190"
+            rx="3.5"
+            ry="2.5"
+            fill="#ffffff"
+            stroke="none"
+          />
+
+          <!-- 蜡烛 -->
+          <!-- 蜡烛主体 -->
+          <rect x="194" y="155" width="12" height="25" rx="1" />
+
+          <!-- 蜡烛芯 -->
+          <line x1="200" y1="155" x2="200" y2="148" stroke-width="2" />
+
+          <!-- 星形火花 -->
+          <path
+            d="M200 148 L202 140 L210 140 L204 135 L206 127 L200 132 L194 127 L196 135 L190 140 L198 140 Z"
+            stroke-width="2"
+          />
+
+          <!-- 火花光芒线条 -->
+          <line x1="200" y1="122" x2="200" y2="115" stroke-width="2" />
+          <line x1="190" y1="125" x2="185" y2="120" stroke-width="2" />
+          <line x1="210" y1="125" x2="215" y2="120" stroke-width="2" />
+          <line x1="185" y1="135" x2="178" y2="133" stroke-width="2" />
+          <line x1="215" y1="135" x2="222" y2="133" stroke-width="2" />
+          <line x1="188" y1="145" x2="182" y2="150" stroke-width="2" />
+          <line x1="212" y1="145" x2="218" y2="150" stroke-width="2" />
+        </g>
+
+        <!-- 文字 -->
+        <text
+          x="200"
+          y="400"
+          font-family="'Comic Neue', cursive"
+          font-size="36"
+          fill="#ffffff"
+          text-anchor="middle"
+          font-weight="400"
+        >
+          Happy birthday
+        </text>
+      </svg>
+    </div>
+
+    <script>
+      const canvas = document.getElementById('fireworksCanvas')
+      const ctx = canvas.getContext('2d')
+
+      // 设置canvas尺寸
+      function resizeCanvas() {
+        canvas.width = window.innerWidth
+        canvas.height = window.innerHeight
+      }
+      resizeCanvas()
+      window.addEventListener('resize', resizeCanvas)
+
+      // 烟花颜色数组
+      const colors = [
+        '#ff6b6b',
+        '#feca57',
+        '#48dbfb',
+        '#ff9ff3',
+        '#54a0ff',
+        '#5f27cd',
+        '#00d2d3',
+        '#1dd1a1',
+        '#ffc048',
+        '#ff9f43'
+      ]
+
+      // 粒子类
+      class Particle {
+        constructor(x, y, color, velocity, decay, isSparkle = false) {
+          this.x = x
+          this.y = y
+          this.color = color
+          this.velocity = velocity
+          this.alpha = 1
+          this.decay = decay
+          this.isSparkle = isSparkle
+          this.gravity = isSparkle ? 0.03 : 0.08
+          this.trail = []
+          this.trailLength = isSparkle ? 3 : 5
+        }
+
+        update() {
+          // 保存轨迹
+          this.trail.push({ x: this.x, y: this.y })
+          if (this.trail.length > this.trailLength) {
+            this.trail.shift()
+          }
+
+          this.velocity.y += this.gravity
+          this.x += this.velocity.x
+          this.y += this.velocity.y
+          this.alpha -= this.decay
+        }
+
+        draw() {
+          ctx.save()
+          ctx.globalAlpha = this.alpha
+
+          // 绘制轨迹
+          if (this.trail.length > 1) {
+            ctx.beginPath()
+            ctx.moveTo(this.trail[0].x, this.trail[0].y)
+            for (let i = 1; i < this.trail.length; i++) {
+              ctx.lineTo(this.trail[i].x, this.trail[i].y)
+            }
+            ctx.strokeStyle = this.color
+            ctx.lineWidth = this.isSparkle ? 1 : 2
+            ctx.stroke()
+          }
+
+          // 绘制粒子
+          ctx.beginPath()
+          ctx.arc(this.x, this.y, this.isSparkle ? 1.5 : 2.5, 0, Math.PI * 2)
+          ctx.fillStyle = this.color
+          ctx.fill()
+
+          // 发光效果
+          ctx.shadowBlur = 10
+          ctx.shadowColor = this.color
+          ctx.beginPath()
+          ctx.arc(this.x, this.y, this.isSparkle ? 2 : 4, 0, Math.PI * 2)
+          ctx.fillStyle = this.color
+          ctx.globalAlpha = this.alpha * 0.5
+          ctx.fill()
+
+          ctx.restore()
+        }
+      }
+
+      // 火箭类（上升的烟花）
+      class Rocket {
+        constructor() {
+          this.x = Math.random() * canvas.width
+          this.y = canvas.height
+          this.targetY =
+            canvas.height * 0.3 + Math.random() * canvas.height * 0.25
+          this.speed = 4 + Math.random() * 3
+          this.color = colors[Math.floor(Math.random() * colors.length)]
+          this.trail = []
+          this.exploded = false
+          this.trailLength = 20
+        }
+
+        update() {
+          // 保存轨迹
+          this.trail.push({ x: this.x, y: this.y })
+          if (this.trail.length > this.trailLength) {
+            this.trail.shift()
+          }
+
+          this.y -= this.speed
+
+          // 添加闪烁效果
+          if (Math.random() < 0.3) {
+            particles.push(
+              new Particle(
+                this.x + (Math.random() - 0.5) * 4,
+                this.y + 10,
+                '#ffffff',
+                { x: 0, y: 0.5 },
+                0.05,
+                true
+              )
+            )
+          }
+
+          // 到达目标高度时爆炸
+          if (this.y <= this.targetY && !this.exploded) {
+            this.explode()
+            this.exploded = true
+          }
+        }
+
+        draw() {
+          if (this.exploded) return
+
+          ctx.save()
+
+          // 绘制尾迹
+          if (this.trail.length > 1) {
+            ctx.beginPath()
+            ctx.moveTo(this.trail[0].x, this.trail[0].y)
+            for (let i = 1; i < this.trail.length; i++) {
+              const alpha = i / this.trail.length
+              ctx.globalAlpha = alpha * 0.8
+              ctx.lineTo(this.trail[i].x, this.trail[i].y)
+            }
+            ctx.strokeStyle = this.color
+            ctx.lineWidth = 3
+            ctx.lineCap = 'round'
+            ctx.stroke()
+          }
+
+          // 绘制火箭头部
+          ctx.globalAlpha = 1
+          ctx.beginPath()
+          ctx.arc(this.x, this.y, 3, 0, Math.PI * 2)
+          ctx.fillStyle = '#ffffff'
+          ctx.fill()
+
+          ctx.shadowBlur = 15
+          ctx.shadowColor = this.color
+          ctx.beginPath()
+          ctx.arc(this.x, this.y, 5, 0, Math.PI * 2)
+          ctx.fillStyle = this.color
+          ctx.globalAlpha = 0.6
+          ctx.fill()
+
+          ctx.restore()
+        }
+
+        explode() {
+          const particleCount = 40 + Math.random() * 30
+
+          // 创建主爆炸粒子
+          for (let i = 0; i < particleCount; i++) {
+            const angle =
+              ((Math.PI * 2) / particleCount) * i + Math.random() * 0.5
+            const velocity = 2 + Math.random() * 4
+            particles.push(
+              new Particle(
+                this.x,
+                this.y,
+                this.color,
+                {
+                  x: Math.cos(angle) * velocity,
+                  y: Math.sin(angle) * velocity
+                },
+                0.015 + Math.random() * 0.01
+              )
+            )
+          }
+
+          // 创建闪烁粒子
+          for (let i = 0; i < 20; i++) {
+            const angle = Math.random() * Math.PI * 2
+            const velocity = 1 + Math.random() * 3
+            particles.push(
+              new Particle(
+                this.x,
+                this.y,
+                '#ffffff',
+                {
+                  x: Math.cos(angle) * velocity,
+                  y: Math.sin(angle) * velocity
+                },
+                0.02 + Math.random() * 0.015,
+                true
+              )
+            )
+          }
+
+          // 创建次级爆炸（延迟）
+          setTimeout(() => {
+            for (let i = 0; i < 15; i++) {
+              const angle = Math.random() * Math.PI * 2
+              const velocity = 1 + Math.random() * 2
+              particles.push(
+                new Particle(
+                  this.x + (Math.random() - 0.5) * 30,
+                  this.y + (Math.random() - 0.5) * 30,
+                  colors[Math.floor(Math.random() * colors.length)],
+                  {
+                    x: Math.cos(angle) * velocity,
+                    y: Math.sin(angle) * velocity
+                  },
+                  0.025,
+                  true
+                )
+              )
+            }
+          }, 200)
+        }
+      }
+
+      // 存储所有粒子
+      let particles = []
+      let rockets = []
+
+      // 发射控制
+      let launchInterval = 1500
+      let lastLaunchTime = 0
+      let rocketCount = 0
+      const maxRockets = 12
+      let stableMode = false
+
+      // 动画循环
+      function animate(currentTime) {
+        // 半透明清除，产生拖尾效果
+        ctx.fillStyle = 'rgba(26, 26, 26, 0.15)'
+        ctx.fillRect(0, 0, canvas.width, canvas.height)
+
+        // 发射新火箭
+        if (currentTime - lastLaunchTime > launchInterval) {
+          // 未达到最大数量时递增，达到后保持稳定循环发射
+          if (rocketCount < maxRockets) {
+            rocketCount++
+            // 逐渐加快发射速度直到稳定
+            if (launchInterval > 400) {
+              launchInterval -= 100
+            }
+          } else {
+            stableMode = true
+            // 稳定模式下保持较快的固定发射间隔
+            launchInterval = 350
+          }
+
+          rockets.push(new Rocket())
+          lastLaunchTime = currentTime
+        }
+
+        // 更新和绘制火箭
+        rockets = rockets.filter((rocket) => {
+          if (!rocket.exploded) {
+            rocket.update()
+            rocket.draw()
+            return true
+          }
+          return false
+        })
+
+        // 更新和绘制粒子
+        particles = particles.filter((particle) => {
+          particle.update()
+          particle.draw()
+          return particle.alpha > 0
+        })
+
+        requestAnimationFrame(animate)
+      }
+
+      // 开始动画
+      animate(0)
+    </script>
+  </body>
+</html>
